@@ -1,7 +1,15 @@
+# Git commands. ls-> git init -> git add . -> git status -> 
+# git commit - m "Commit" -> git push origin -> 
+# git remote add origin 'your_url_name' -> git push -u origin master -> git reset --hard -> git pull
+
+
+
+
 
 from gettext import find
 from random import random
 import pandas as pd
+
 
 #Image process stuff.
 
@@ -10,9 +18,14 @@ from skimage.transform import resize
 from matplotlib import pyplot as plt
 import matplotlib.cm as cm
 
-# Fucking pymongo
 
-import 
+# Working with XML code.
+
+from lxml import objectify
+
+xml = objectify.parse(open("XMLData.xml"))
+
+
 
 
 
