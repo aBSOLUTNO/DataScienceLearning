@@ -19,11 +19,33 @@ from matplotlib import pyplot as plt
 import matplotlib.cm as cm
 
 
-# Working with XML code.
+# Importing XML stuff.
 
 from lxml import objectify
 
-xml = objectify.parse(open("XMLData.xml"))
+
+# Working with XML files.
+
+# Parsing the file.
+xml = objectify.parse(open('XMLData.xml'))
+
+# Accessing the rootnode so you can access the child. (<MyDataset>)
+root = xml.getroot()
+
+# Creating a dataframe which contains all the columns.
+df = pd.DataFrame(columns=('Number', 'String', 'Boolean'))
+
+# This loop fills the 'obj' with
+
+for i in range (0,4): # Loops 4 times for each (<Record> elements in XML.)
+    obj = root.getchildren()[i].getchildren()
+    # Below creates a dictionary object with keys (' Number ' etc).
+    row = dict(zip(['Number', 'String', 'Boolean'],[obj[0].text, obj[1].text,obj[2].text]))
+    row_s = pd.Series(row)
+    row_s.name = i
+    df = df.append(row_s)
+
+print(df)
 
 
 
